@@ -16,8 +16,9 @@
 
 # We should really not "provide" all the bundled libraries
 %global __provides_exclude ^lib.*
-# Bundled lib doesn't need to show up as a requirement for -devel
-%global __requires_exclude ^libhunspell.so
+# Bundled libs doesn't need to show up as a requirement either, especially
+# since nothing provides them now
+%global __requires_exclude ^lib(hunspell|lgpllibs|moz.*|nspr4|nss3|nssutil3|plc4|plds4|smime3|ssl3|xul)\\.so.*
 
 %ifarch %{x86_64}
 %define build_arch x86_64
@@ -28,7 +29,7 @@
 %endif
 
 Name:           basilisk
-Release:        1
+Release:        2
 Summary:        An independent browser derived from Firefox/Mozilla community code.
 Group:          Internet
 License:        MPL-2.0
