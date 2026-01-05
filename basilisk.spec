@@ -16,6 +16,8 @@
 
 # We should really not "provide" all the bundled libraries
 %global __provides_exclude ^lib.*
+# Bundled lib doesn't need to show up as a requirement for -devel
+%global __requires_exclude ^libhunspell.so
 
 %ifarch %{x86_64}
 %define build_arch x86_64
