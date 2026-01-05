@@ -8,9 +8,6 @@
 
 %define moz_ver 52.9.0
 
-# style the commit date when using a tag instead of a release
-%define basilisk_ver 2025.10.10
-
 # fixes error: Empty %files file …/debugsourcefiles.list
 %undefine _debugsource_packages
 
@@ -20,27 +17,18 @@
 # since nothing provides them now
 %global __requires_exclude ^lib(hunspell|lgpllibs|moz.*|nspr4|nss3|nssutil3|plc4|plds4|smime3|ssl3|xul)\\.so.*
 
-%ifarch %{x86_64}
-%define build_arch x86_64
-%endif
-
-%ifarch %{aarch64}
-%define build_arch aarch64
-%endif
-
 Name:           basilisk
-Release:        2
 Summary:        An independent browser derived from Firefox/Mozilla community code.
 Group:          Internet
 License:        MPL-2.0
 URL:            https://basilisk-browser.org
 
+Version:	2025.10.10
+Release:        2
 # change the source URL depending on if the package is a release version or a git version
 %if "%{commit_tag}" != "%{nil}"
-Version:        %{basilisk_ver}
 Source0:        https://repo.palemoon.org/Basilisk-Dev/Basilisk/archive/%{commit_tag}.tar.gz#/%{name}-%{?commit_date}.tar.gz
 %else
-Version:        %{basilisk_ver}
 Source0:        https://repo.palemoon.org/Basilisk-Dev/Basilisk/archive/v%version.tar.gz#/%name-%version.tar.gz
 %endif
 
