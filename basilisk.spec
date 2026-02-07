@@ -8,6 +8,9 @@
 
 %define moz_ver 52.9.0
 
+# palemoon's XUL version
+%define pm_rel_base 20260121
+
 # fixes error: Empty %files file …/debugsourcefiles.list
 %undefine _debugsource_packages
 
@@ -23,8 +26,8 @@ Group:          Internet
 License:        MPL-2.0
 URL:            https://basilisk-browser.org
 
-Version:	2025.10.10
-Release:        2
+Version:	2026.01.23
+Release:        1
 # change the source URL depending on if the package is a release version or a git version
 %if "%{commit_tag}" != "%{nil}"
 Source0:        https://repo.palemoon.org/Basilisk-Dev/Basilisk/archive/%{commit_tag}.tar.gz#/%{name}-%{?commit_date}.tar.gz
@@ -33,7 +36,7 @@ Source0:        https://repo.palemoon.org/Basilisk-Dev/Basilisk/archive/v%versio
 %endif
 
 # Required for building the browser (latest release)
-Source1:        https://repo.palemoon.org/MoonchildProductions/UXP/archive/RB_20251019.tar.gz
+Source1:        https://repo.palemoon.org/MoonchildProductions/UXP/archive/RB_%{pm_rel_base}.tar.gz
 Source2:        basilisk.desktop
 Source3:        official.tar.xz
 
@@ -139,7 +142,7 @@ ac_add_options --disable-debug
 ac_add_options --disable-necko-wifi
 ac_add_options --disable-updater
 ac_add_options --with-pthreads
-ac_add_options --disable-gconf
+# ac_add_options --disable-gconf
 ac_add_options --enable-official-branding
 
 export MOZILLA_OFFICIAL=1
