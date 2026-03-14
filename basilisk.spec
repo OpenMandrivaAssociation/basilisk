@@ -26,8 +26,8 @@ Group:          Internet
 License:        MPL-2.0
 URL:            https://basilisk-browser.org
 
-Version:	2026.03.09
-Release:        1
+Version:	      2026.03.09
+Release:        2
 # change the source URL depending on if the package is a release version or a git version
 %if "%{commit_tag}" != "%{nil}"
 Source0:        https://repo.palemoon.org/Basilisk-Dev/Basilisk/archive/%{commit_tag}.tar.gz#/%{name}-%{?commit_date}.tar.gz
@@ -39,6 +39,7 @@ Source0:        https://repo.palemoon.org/Basilisk-Dev/Basilisk/archive/v%versio
 Source1:        https://repo.palemoon.org/MoonchildProductions/UXP/archive/RB_%{pm_rel_base}.tar.gz
 Source2:        basilisk.desktop
 Source3:        official.tar.xz
+Source4:        basilisk-fix-uxp-weakref.patch
 
 BuildRequires:  pkgconfig(gtk+-3.0) pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(python2)
@@ -88,6 +89,9 @@ Requires:       %name = %version
 %autosetup -p1 -n %name
 tar -xf %{S:1} --strip-components=1 -C %{_builddir}/%name/platform/
 tar -xf %{S:3} -C %{_builddir}/%name/%name/branding/
+
+# will be fixed in upstream
+patch -p1 -d %{_builddir}/%name/platform/ < %{S:4}
 
 # plans to merge in upstream, per Basilisk-Dev
 # awaiting MR
