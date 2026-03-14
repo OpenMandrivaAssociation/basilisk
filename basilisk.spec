@@ -9,7 +9,7 @@
 %define moz_ver 52.9.0
 
 # palemoon's XUL version
-%define pm_rel_base 20260121
+%define pm_rel_base 20260301
 
 # fixes error: Empty %files file …/debugsourcefiles.list
 %undefine _debugsource_packages
@@ -26,7 +26,7 @@ Group:          Internet
 License:        MPL-2.0
 URL:            https://basilisk-browser.org
 
-Version:	2026.01.23
+Version:	2026.03.09
 Release:        1
 # change the source URL depending on if the package is a release version or a git version
 %if "%{commit_tag}" != "%{nil}"
