@@ -68,7 +68,7 @@ BuildRequires:  m4
 %doc README.md AUTHORS
 %{_bindir}/%{name}
 %{_libdir}/%{name}-%{moz_ver}
-%{_iconsdir}/hicolor/*/*/*
+%{_iconsdir}/hicolor/*x*/apps/%name.png
 # FIXME this location violates the icon spec
 %{_iconsdir}/hicolor/128x128/mozicon128.png
 %{_datadir}/applications/%{name}.desktop
