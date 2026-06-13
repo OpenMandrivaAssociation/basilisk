@@ -1,15 +1,7 @@
-# set to nil when packaging a release, 
-# or the long commit tag for the specific git branch
-%define commit_tag %{nil}
-
-# when using a commit_tag (i.e. not nil) add a commit date
-# decoration ~0.yyyyMMdd to Version number
-%define commit_date %{nil}
-
 %define moz_ver 52.9.0
 
 # palemoon's XUL version
-%define pm_rel_base 20260406
+%define pm_rel_base 20260609
 
 # fixes error: Empty %files file …/debugsourcefiles.list
 %undefine _debugsource_packages
@@ -26,14 +18,9 @@ Group:          Internet
 License:        MPL-2.0
 URL:            https://basilisk-browser.org
 
-Version:	      2026.04.15
+Version:	      2026.06.12
 Release:        1
-# change the source URL depending on if the package is a release version or a git version
-%if "%{commit_tag}" != "%{nil}"
-Source0:        https://repo.palemoon.org/Basilisk-Dev/Basilisk/archive/%{commit_tag}.tar.gz#/%{name}-%{?commit_date}.tar.gz
-%else
 Source0:        https://repo.palemoon.org/Basilisk-Dev/Basilisk/archive/v%version.tar.gz#/%name-%version.tar.gz
-%endif
 
 # Required for building the browser (latest release)
 Source1:        https://repo.palemoon.org/MoonchildProductions/UXP/archive/RB_%{pm_rel_base}.tar.gz
@@ -41,7 +28,7 @@ Source2:        basilisk.desktop
 Source3:        official.tar.xz
 
 BuildRequires:  pkgconfig(gtk+-3.0) pkgconfig(gtk+-2.0)
-BuildRequires:  pkgconfig(python2)
+BuildRequires:  pkgconfig(python)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gconf-2.0)
@@ -54,7 +41,6 @@ BuildRequires:	pkgconfig(cairo)
 BuildRequires:	pkgconfig(pixman-1)
 BuildRequires:	pkgconfig(libjpeg)
 BuildRequires:	pkgconfig(zlib)
-BuildRequires:  python2
 BuildRequires:  yasm
 BuildRequires:  make
 BuildRequires:  zip
