@@ -173,7 +173,7 @@ EOF
 
 %install
 DESTDIR=%{buildroot} ./mach install
-install -m 644 -D %{S:3} %{buildroot}/%{_datadir}/applications/%name.desktop
+install -m 644 -D %{S:2} %{buildroot}/%{_datadir}/applications/%name.desktop
 
 # icons
 for s in 16 32 48 256; do
