@@ -27,7 +27,7 @@ License:        MPL-2.0
 URL:            https://basilisk-browser.org
 
 Version:	      2026.04.15
-Release:        1
+Release:        2
 # change the source URL depending on if the package is a release version or a git version
 %if "%{commit_tag}" != "%{nil}"
 Source0:        https://repo.palemoon.org/Basilisk-Dev/Basilisk/archive/%{commit_tag}.tar.gz#/%{name}-%{?commit_date}.tar.gz
